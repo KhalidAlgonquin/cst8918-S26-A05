@@ -149,3 +149,18 @@ resource "azurerm_network_interface_security_group_association" "nic_nsg" {
   network_interface_id      = azurerm_network_interface.nic.id
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
+
+# -----------------------------
+# Cloud-init configuration
+# -----------------------------
+
+data "cloudinit_config" "web_server_config" {
+  gzip          = false
+  base64_encode = true
+
+  part {
+    filename     = "init.sh"
+    content_type = "text/x-shellscript"
+    content      = file("${path.module}/init.sh")
+  }
+}
