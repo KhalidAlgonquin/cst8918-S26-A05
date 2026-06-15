@@ -66,3 +66,14 @@ resource "azurerm_public_ip" "public_ip" {
   allocation_method   = "Static"
   sku                 = "Standard"
 }
+
+# -----------------------------
+# Virtual Network
+# -----------------------------
+
+resource "azurerm_virtual_network" "vnet" {
+  name                = "${var.labelPrefix}-A05-VNET"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = ["10.0.0.0/16"]
+}
