@@ -24,3 +24,24 @@ provider "azurerm" {
 provider "cloudinit" {
   # Configuration options
 }
+
+# -----------------------------
+# Variables
+# -----------------------------
+
+variable "labelPrefix" {
+  description = "Your college username. This will form the beginning of various resource names."
+  type        = string
+}
+
+variable "region" {
+  description = "Azure region for the deployment."
+  type        = string
+  default     = "canadacentral"
+}
+
+variable "admin_username" {
+  description = "Admin username for the Linux VM."
+  type        = string
+  default     = "azureadmin"
+}
