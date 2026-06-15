@@ -200,3 +200,18 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   custom_data = data.cloudinit_config.web_server_config.rendered
 }
+
+# -----------------------------
+# Output Values
+# -----------------------------
+
+output "resource_group_name" {
+  description = "Name of the Azure resource group."
+  value       = azurerm_resource_group.rg.name
+}
+
+output "public_ip_address" {
+  description = "Public IP address of the web server."
+  value       = azurerm_public_ip.public_ip.ip_address
+}
+
